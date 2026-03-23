@@ -29,7 +29,7 @@
       --card-soft: #edf4ff;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       font-family: 'Heebo', sans-serif;
@@ -38,11 +38,6 @@
       direction: rtl;
       overflow-x: hidden;
       line-height: 1.65;
-      background-image:
-        radial-gradient(circle at 15% 8%, rgba(99,162,255,0.12) 0%, transparent 34%),
-        radial-gradient(circle at 86% 20%, rgba(61,127,224,0.1) 0%, transparent 32%),
-        linear-gradient(180deg, #f8fbff 0%, #f2f8ff 48%, #f8fbff 100%);
-      background-attachment: fixed;
     }
 
     /* ── NAV ── */
@@ -622,8 +617,8 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
 
-    .packages-header .section-title {
-      white-space: nowrap;
+    @media (min-width: 901px) {
+      .packages-header .section-title { white-space: nowrap; }
     }
 
     .packages-header .btn-primary {
@@ -1171,100 +1166,64 @@
       .nav-cta { font-size: 13px; padding: 9px 16px; }
       .nav-links { display: none; }
       section { padding: 64px 20px; }
+      .section-title { font-size: clamp(36px, 8vw, 64px); }
       .hero { min-height: 100svh; }
-      .hero-content {
-        padding: 0 20px 52px;
-      }
-      .hero-title {
-        margin-bottom: 20px;
-        line-height: 0.9;
-      }
-      .hero-sub {
-        max-width: none;
-        font-size: 16px;
-        margin-bottom: 26px;
-      }
-      .hero-actions {
-        gap: 12px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-      }
+      .hero-content { padding: 0 20px 52px; }
+      .hero-title { margin-bottom: 20px; line-height: 0.9; }
+      .hero-sub { max-width: none; font-size: 16px; margin-bottom: 26px; }
+      .hero-actions { gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
       .hero-actions .btn-primary { padding: 16px 28px; font-size: 15px; }
-      .hero-stats {
-        gap: 24px;
-        padding-top: 24px;
-      }
+      .hero-stats { gap: 24px; padding-top: 24px; }
       .stat-num { font-size: 38px; }
       .about { grid-template-columns: 1fr; }
       .about::before { display: none; }
       .about-text { padding: 64px 20px; }
-      .about-photo { min-height: 380px; order: -1; }
+      .about-photo { min-height: 340px; order: -1; }
       .about-text p { font-size: 15.5px; }
-      .about-highlight { margin: 24px 0 !important; }
+      .about-highlight { margin: 24px 0 !important; font-size: 16px !important; }
       .services-grid { grid-template-columns: 1fr; gap: 14px; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; padding-bottom: 28px; }
+      .services-header .btn-primary { align-self: flex-start; }
+      .service-card { padding: 44px 24px 32px; }
+      .service-line { margin-top: 56px; }
       .packages-grid { grid-template-columns: 1fr; gap: 14px; }
       .packages-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; padding-bottom: 28px; }
       .packages-header .btn-primary { align-self: flex-start; }
-      .services-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; padding-bottom: 28px; }
-      .services-header .btn-primary { align-self: flex-start; }
-      .service-card { padding: 44px 28px 36px; }
-      .service-line { margin-top: 56px; }
-      .testimonials {
-        padding-top: 72px;
-        padding-bottom: 72px;
-      }
-      .testimonials::before { font-size: 220px; top: -40px; }
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 32px;
-      }
+      .package-card { padding: 32px 24px; }
+      .testimonials { padding-top: 72px; padding-bottom: 72px; }
+      .testimonials::before { font-size: 180px; top: -30px; }
+      .testimonials-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
       .testimonial-card { padding: 36px 24px 28px; }
-      .cta-section {
-        padding-top: 86px;
-        padding-bottom: 86px;
-      }
+      .cta-section { padding-top: 86px; padding-bottom: 86px; }
       .cta-section .section-body { margin-bottom: 36px; }
-      .cta-trust { gap: 14px; }
-      footer {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-        padding: 40px 20px;
-      }
+      .cta-trust { gap: 14px; flex-direction: column; align-items: center; }
+      .cta-trust-dot { display: none; }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 20px; }
     }
 
     @media (max-width: 600px) {
       nav { padding: 10px 12px; }
       .nav-logo { font-size: 15px; letter-spacing: 0.06em; }
       .nav-cta { font-size: 12px; padding: 8px 12px; }
-      section { padding: 56px 16px; }
-      .hero-content { padding: 0 16px 44px; }
-      .hero-title { font-size: clamp(58px, 18vw, 90px); }
+      section { padding: 48px 16px; }
+      .section-title { font-size: clamp(32px, 9vw, 52px); }
+      .hero-content { padding: 0 16px 40px; }
+      .hero-title { font-size: clamp(48px, 15vw, 80px); }
       .hero-sub { font-size: 15px; margin-bottom: 20px; }
-      .btn-primary,
-      .btn-wa { padding: 12px 20px; }
-      .btn-primary { font-size: 14px; }
-      .btn-ghost { font-size: 14px; }
-      .hero-stats {
-        padding: 10px 8px;
-        gap: 6px;
-        border-radius: 12px;
-      }
+      .hero-stats { gap: 16px; padding-top: 20px; }
       .stat-num { font-size: 28px; }
       .stat-label { font-size: 11px; }
-      .service-card { padding: 28px 18px; }
-      .service-title { font-size: 21px; }
-      .wa-float {
-        width: 48px;
-        height: 48px;
-        left: 16px;
-        bottom: 16px;
-      }
-      .wa-float svg {
-        width: 24px;
-        height: 24px;
-      }
+      .btn-primary, .btn-wa { padding: 14px 24px; font-size: 15px; }
+      .btn-ghost { font-size: 14px; }
+      .about-photo { min-height: 280px; }
+      .service-card { padding: 36px 18px 28px; }
+      .service-title { font-size: 22px; }
+      .service-num { font-size: 80px; }
+      .service-line { margin-top: 44px; }
+      .package-card { padding: 28px 18px; }
+      .package-title { font-size: 22px; }
+      .wa-float { width: 48px; height: 48px; left: 16px; bottom: 16px; }
+      .wa-float svg { width: 24px; height: 24px; }
     }
   </style>
 </head>
