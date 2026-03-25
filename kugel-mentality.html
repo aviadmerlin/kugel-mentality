@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kugel Mentality – אימון מנטלי לספורטאים</title>
+  <title>Kugel Mentality - אימון מנטלי לספורטאים</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -182,7 +182,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 50% 8%;
+      object-position: 50% 20%;
       display: block;
     }
 
@@ -1011,6 +1011,27 @@
 
     .btn-wa:hover::before { left: 100%; }
 
+    .btn-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.03em;
+      padding: 20px 44px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 16px 40px rgba(180, 60, 120, 0.4);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+    }
+
+    .btn-instagram:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 22px 50px rgba(180, 60, 120, 0.55);
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #030c18;
@@ -1225,6 +1246,230 @@
       .wa-float { width: 48px; height: 48px; left: 16px; bottom: 16px; }
       .wa-float svg { width: 24px; height: 24px; }
     }
+
+    /* ── VIDEO GALLERY ── */
+    .video-gallery {
+      background: #04111f;
+      color: var(--white);
+      padding: 100px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-gallery > * { position: relative; z-index: 1; }
+    .video-gallery .section-tag { color: var(--accent); }
+    .video-gallery .section-title { color: var(--white); }
+
+    .video-slider-wrap {
+      position: relative;
+      margin-top: 56px;
+    }
+
+    .video-slider-track-outer {
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .video-slider-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .video-slide {
+      flex: 0 0 calc(33.333% - 14px);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0a1e36;
+      border: 1px solid rgba(255,255,255,0.07);
+      aspect-ratio: 9 / 16;
+      position: relative;
+    }
+
+    .video-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      border: 1px solid rgba(99,162,255,0);
+      transition: border-color 0.3s ease;
+      pointer-events: none;
+    }
+
+    .video-slide:hover::after { border-color: rgba(99,162,255,0.4); }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(99,162,255,0.15);
+      border: 1px solid rgba(99,162,255,0.3);
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.3s ease, transform 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .slider-btn:hover { background: rgba(99,162,255,0.3); transform: translateY(-50%) scale(1.08); }
+    .slider-btn:disabled { opacity: 0.3; cursor: default; }
+    .slider-btn:disabled:hover { background: rgba(99,162,255,0.15); transform: translateY(-50%) scale(1); }
+
+    .slider-btn-prev { right: -64px; }
+    .slider-btn-next { left: -64px; }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      padding: 0;
+    }
+
+    .slider-dot.active { background: var(--accent); transform: scale(1.3); }
+
+    @media (max-width: 900px) {
+      .video-gallery { padding: 80px 24px; }
+      .slider-btn-prev { right: -14px; }
+      .slider-btn-next { left: -14px; }
+      .video-slide { flex: 0 0 calc(50% - 10px); }
+    }
+
+    @media (max-width: 600px) {
+      .video-gallery { padding: 60px 16px; }
+      .video-slide { flex: 0 0 calc(85% - 10px); }
+      .slider-btn-prev { right: -8px; }
+      .slider-btn-next { left: -8px; }
+    }
+
+    /* ── PHOTO GALLERY ── */
+    .photo-gallery {
+      background: #060e1c;
+      color: var(--white);
+      padding: 100px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-gallery > * { position: relative; z-index: 1; }
+    .photo-gallery .section-tag { color: var(--accent); }
+    .photo-gallery .section-title { color: var(--white); }
+
+    .photo-grid {
+      columns: 4;
+      column-gap: 14px;
+      margin-top: 56px;
+    }
+
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .photo-item:hover img { transform: scale(1.04); }
+
+    .photo-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      border: 1px solid rgba(99,162,255,0);
+      transition: border-color 0.3s ease;
+      pointer-events: none;
+    }
+
+    .photo-item:hover::after { border-color: rgba(99,162,255,0.4); }
+
+    /* lightbox */
+    .pg-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .pg-lightbox.open { opacity: 1; pointer-events: all; }
+
+    .pg-lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+    }
+
+    .pg-lightbox-close {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .pg-lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+    @media (max-width: 900px) {
+      .photo-gallery { padding: 80px 24px; }
+      .photo-grid { columns: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .photo-gallery { padding: 60px 16px; }
+      .photo-grid { columns: 2; column-gap: 10px; }
+      .photo-item { margin-bottom: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -1238,13 +1483,13 @@
       <li><a href="#testimonials">המלצות</a></li>
       <li><a href="#contact">צור קשר</a></li>
     </ul>
-    <a href="https://wa.me/972XXXXXXXX" class="nav-cta">בואו נדבר</a>
+    <a href="https://api.whatsapp.com/send?phone=524386813" class="nav-cta">בואו נדבר</a>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-image-side">
-      <img src="assets/IMG_3504.jpg" alt="עידן קוגל" />
+      <img src="assets/header-photo.jpg" alt="עידן קוגל" />
     </div>
     <div class="hero-content">
       <p class="hero-eyebrow">אימון מנטלי לספורטאים</p>
@@ -1252,9 +1497,9 @@
         Kugel<br />
         <em>Mentality</em>
       </h1>
-      <p class="hero-sub">אימון מנטלי לספורטאים – בונה ווינרים. כי המוח הוא השריר החשוב ביותר.</p>
+      <p class="hero-sub">אימון מנטלי לספורטאים - בונה ווינרים. כי המוח הוא השריר החשוב ביותר.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/972XXXXXXXX" class="btn-primary">
+        <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-primary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           וואצאפ עכשיו
         </a>
@@ -1282,15 +1527,15 @@
     <div class="about-text reveal" style="--reveal-delay:0ms">
       <p class="section-tag">אודות</p>
       <h2 class="section-title">עידן קוגל</h2>
-      <p>נעים להכיר, אני עידן קוגל, בן 25, שיחקתי כדורגל באופן מקצועי מגיל 8 עד גיל 18 — מעולם לא הייתי השחקן הכי מוכשר על המגרש, אך תמיד הייתי זה שרץ הכי הרבה. מנהיג ושחקן שרגעי השיא שלו היו בשיא הלחץ של העונה.</p>
-      <p>בגיל 18 עזבתי את החלום עבור שירות קרבי בסיירת נח״ל. לאחר שירות מלא כלוחם ומפקד — השתחררתי עם מטרה אחת בראש: <strong>לבנות ווינרים.</strong></p>
+      <p>נעים להכיר, אני עידן קוגל, בן 25, שיחקתי כדורגל באופן מקצועי מגיל 8 עד גיל 18 — מעולם לא הייתי השחקן הכי מוכשר על המגרש, אך תמיד הייתי זה שרץ הכי הרבה, מנהיג ושחקן שרגעי השיא שלו היו בשיא הלחץ של העונה.</p>
+      <p>בגיל 18 עזבתי את החלום עבור שירות קרבי בסיירת נח״ל. לאחר שירות מלא כלוחם ומפקד - השתחררתי עם מטרה אחת בראש: <strong>לבנות ווינרים.</strong></p>
       <p>ב-3 העונות האחרונות אני עובד במחלקת הנוער של הפועל כפ״ס, מוביל את התחום המנטלי במועדון ומלווה באופן צמוד את קבוצת הנוער בליגת העל.</p>
       <p>במקביל, כבר עונה רביעית שאני מלווה שחקנים באופן אישי — בונה אופי, משמעת עצמית, ביטחון, ניהול רגשות, ריכוז. כלים שמביאים לביצועי שיא על המגרש ולגרסה הטובה ביותר שלך בחיים.</p>
-      <p class="about-highlight">ילדים של מילואימניקים יקבלו הנחה — מצדיע לכם!</p>
-      <p>כל שחקן שמגיע אליי הוא כמו אח קטן עבורי. הקשר האישי חשוב לי לא פחות מהתוצאות. זמין עבורך לכל דבר — אלוף.</p>
+      <p class="about-highlight">ילדים של מילואימניקים יקבלו הנחה - מצדיע לכם!</p>
+      <p>כל שחקן שמגיע אליי הוא כמו אח קטן עבורי. הקשר האישי חשוב לי לא פחות מהתוצאות. זמין עבורך לכל דבר - אלוף.</p>
     </div>
     <div class="about-photo reveal" style="--reveal-delay:120ms">
-      <img src="assets/IMG_3500.jpg" alt="עידן קוגל" />
+      <img src="assets/about-section-photo.jpeg" alt="עידן קוגל" />
     </div>
   </section>
 
@@ -1301,26 +1546,26 @@
         <p class="section-tag">שירותים</p>
         <h2 class="section-title">מה אני מציע</h2>
       </div>
-      <a href="https://wa.me/972XXXXXXXX" class="btn-primary">התחל עכשיו →</a>
+      <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-primary">התחל עכשיו →</a>
     </div>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-num">01</div>
         <div class="service-line"></div>
         <h3 class="service-title">אימון מנטלי אישי</h3>
-        <p class="service-desc">עבודה 1:1 לפיתוח חוסן מנטלי, מיקוד ויכולת ביצוע תחת לחץ. מותאם אישית לכל ספורטאי.</p>
+        <p class="service-desc">עבודה 1:1 לפיתוח חוסן מנטלי, ביטחון עצמי ויכולת ביצוע תחת לחץ. מותאם אישית לכל ספורטאי.</p>
       </div>
       <div class="service-card">
         <div class="service-num">02</div>
         <div class="service-line"></div>
         <h3 class="service-title">אימון לקבוצות</h3>
-        <p class="service-desc">בניית מנטליות ניצחון קבוצתית, שיפור תקשורת ותיאום תחת לחץ תחרותי.</p>
+        <p class="service-desc">בניית גישה ווינרית, שיפור תקשורת על המגרש, שיתוף פעולה וקבוצתיות.</p>
       </div>
       <div class="service-card">
         <div class="service-num">03</div>
         <div class="service-line"></div>
         <h3 class="service-title">סדנאות</h3>
-        <p class="service-desc">סדנאות ממוקדות לקבוצות, בתי ספר לספורט ומרכזי אימון. כלים מעשיים ליישום מיידי.</p>
+        <p class="service-desc">סדנאות ממוקדות לקבוצות לשיפור יכולות מנטליות אישיות וקבוצתיות. כלים מעשיים ליישום מיידי.</p>
       </div>
     </div>
   </section>
@@ -1332,7 +1577,7 @@
         <p class="section-tag">תוכניות</p>
         <h2 class="section-title">בחר את תוכנית הליווי שלך</h2>
       </div>
-      <a href="https://wa.me/972XXXXXXXX" class="btn-primary">שוחח איתי →</a>
+      <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-primary">שוחח איתי →</a>
     </div>
     <div class="packages-grid">
       <div class="package-card">
@@ -1400,15 +1645,75 @@
     </div>
   </section>
 
+  <!-- VIDEO GALLERY -->
+  <section class="video-gallery" id="videos">
+    <p class="section-tag">סרטונים</p>
+    <h2 class="section-title">ראו בעצמכם</h2>
+    <div class="video-slider-wrap">
+      <button class="slider-btn slider-btn-prev" id="vg-prev" aria-label="הקודם">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button class="slider-btn slider-btn-next" id="vg-next" aria-label="הבא">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="video-slider-track-outer">
+        <div class="video-slider-track" id="vg-track">
+          <div class="video-slide"><video src="assets/videos/131be4d1-08ac-42a5-af1f-253aa05244f9.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/40aa1fc5-6af9-4e1d-8002-8c6c8ec8c2ac.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/4708fcc8-3ce5-404e-a844-a1130a30dfd0.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/59d966de-205c-43e8-a021-492e9d827cea.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/62dbd345-58ad-4751-ba8d-c35306169289.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/6b089b2c-3ead-4021-b869-f1af3318b266.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/7bf4b688-aca5-4328-bd1c-88bbaab916b8.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/IMG_8084.MOV" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/b9ae0971-3375-488d-abea-0333e35379cd.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/cdca74dc-14be-4d6b-b030-784258a5d058.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/dabc534b-43a8-44cc-8e56-c3c670de2227.mp4" controls preload="metadata" playsinline></video></div>
+          <div class="video-slide"><video src="assets/videos/e8e7a058-0a8c-4a0b-8a42-ee9848e2f6a7.mp4" controls preload="metadata" playsinline></video></div>
+        </div>
+      </div>
+      <div class="slider-dots" id="vg-dots"></div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section class="photo-gallery" id="photos">
+    <p class="section-tag">גלריה</p>
+    <h2 class="section-title">רגעים מהשטח</h2>
+    <div class="photo-grid">
+      <div class="photo-item"><img src="assets/photos/28799D65-9CB6-4592-9E5A-3A176EC2053F.jpg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/93aca8a6-1614-4774-b817-04d9b06a84bb.jpg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/ROY01598.jpeg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/TO_00202.jpeg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/TO_00205.jpeg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/TO_00212.jpeg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/TO_00223.jpeg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/TO_00225.jpeg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/TO_00276.jpeg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/da6245fa-6b41-405b-bfa0-134bf27a414a.jpg" alt="תמונה" loading="lazy" /></div>
+      <div class="photo-item"><img src="assets/photos/TO_00240.jpeg" alt="תמונה" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- lightbox -->
+  <div class="pg-lightbox" id="pg-lightbox">
+    <button class="pg-lightbox-close" id="pg-lightbox-close">✕</button>
+    <img id="pg-lightbox-img" src="" alt="" />
+  </div>
+
   <!-- CTA -->
   <section class="cta-section" id="contact">
     <p class="section-tag">צור קשר</p>
     <h2 class="section-title">מוכן לשדרג<br>את המנטליות שלך?</h2>
     <p class="section-body">שיחה ראשונית בחינם. אין מחויבות — רק תוצאות.</p>
     <div class="cta-actions">
-      <a href="https://wa.me/972XXXXXXXX" class="btn-wa">
+      <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-wa">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         שלח הודעה בוואצאפ
+      </a>
+      <a href="https://www.instagram.com/kugel.mentality?igsh=bW9oenVhbHZzcDMw" class="btn-instagram" target="_blank" rel="noopener" aria-label="אינסטגרם">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        אינסטגרם
       </a>
     </div>
     <div class="cta-trust">
@@ -1432,7 +1737,7 @@
   </footer>
 
   <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/972XXXXXXXX" class="wa-float" aria-label="צור קשר בוואצאפ">
+  <a href="https://api.whatsapp.com/send?phone=524386813" class="wa-float" aria-label="צור קשר בוואצאפ">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </a>
 
@@ -1472,6 +1777,98 @@
       );
 
       revealTargets.forEach((el) => io.observe(el));
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const track = document.getElementById('vg-track');
+      const slides = track.querySelectorAll('.video-slide');
+      const prevBtn = document.getElementById('vg-prev');
+      const nextBtn = document.getElementById('vg-next');
+      const dotsWrap = document.getElementById('vg-dots');
+
+      let perView = 3;
+      let current = 0;
+
+      function getPerView() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+      }
+
+      function totalPages() { return Math.ceil(slides.length / perView); }
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        for (let i = 0; i < totalPages(); i++) {
+          const d = document.createElement('button');
+          d.className = 'slider-dot' + (i === current ? ' active' : '');
+          d.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(d);
+        }
+      }
+
+      function updateDots() {
+        dotsWrap.querySelectorAll('.slider-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      function goTo(page) {
+        current = Math.max(0, Math.min(page, totalPages() - 1));
+        const slideWidth = slides[0].offsetWidth + 20;
+        track.style.transform = `translateX(${current * perView * slideWidth}px)`;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= totalPages() - 1;
+        updateDots();
+        // pause all videos when sliding
+        track.querySelectorAll('video').forEach(v => v.pause());
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      function init() {
+        perView = getPerView();
+        current = 0;
+        buildDots();
+        goTo(0);
+      }
+
+      // pause others when a video plays
+      slides.forEach(slide => {
+        slide.querySelector('video').addEventListener('play', function () {
+          slides.forEach(s => {
+            const v = s.querySelector('video');
+            if (v !== this) v.pause();
+          });
+        });
+      });
+
+      window.addEventListener('resize', init);
+      init();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const items = document.querySelectorAll('.photo-item');
+      const lightbox = document.getElementById('pg-lightbox');
+      const lightboxImg = document.getElementById('pg-lightbox-img');
+      const lightboxClose = document.getElementById('pg-lightbox-close');
+
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          lightboxImg.src = item.querySelector('img').src;
+          lightbox.classList.add('open');
+        });
+      });
+
+      function closeLightbox() { lightbox.classList.remove('open'); lightboxImg.src = ''; }
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
     })();
   </script>
 
