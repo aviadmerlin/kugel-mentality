@@ -1836,6 +1836,14 @@
         goTo(0);
       }
 
+      // force first frame on mobile (iOS ignores preload="metadata")
+      slides.forEach(slide => {
+        const v = slide.querySelector('video');
+        v.addEventListener('loadedmetadata', function () {
+          this.currentTime = 0.1;
+        }, { once: true });
+      });
+
       // pause others when a video plays
       slides.forEach(slide => {
         slide.querySelector('video').addEventListener('play', function () {
