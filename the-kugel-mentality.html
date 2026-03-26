@@ -433,19 +433,33 @@
 
     /* ── HAPOEL SECTION ── */
     .hapoel-section {
-      background: #f2f7ff;
-      padding: 80px 80px;
-      border-bottom: 3px solid var(--accent);
+      background: #07111f;
+      padding: 96px 80px;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
+    .hapoel-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(99,162,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,162,255,0.018) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+
+    .hapoel-section > * { position: relative; z-index: 1; }
+
     .hapoel-inner {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 72px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      max-width: 1100px;
+      gap: 36px;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     .hapoel-logo-wrap {
@@ -455,49 +469,50 @@
     }
 
     .hapoel-logo-placeholder {
-      width: 160px;
-      height: 160px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      background: rgba(10,35,70,0.06);
-      border: 2px solid rgba(99,162,255,0.2);
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(255,255,255,0.12);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
     .hapoel-logo-placeholder:hover {
-      transform: scale(1.05);
-      box-shadow: 0 16px 40px rgba(10,35,70,0.12);
+      transform: scale(1.06);
+      border-color: rgba(99,162,255,0.4);
+      box-shadow: 0 0 32px rgba(99,162,255,0.15);
     }
 
     .hapoel-logo-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      padding: 16px;
+      padding: 14px;
+      filter: brightness(0) invert(1) opacity(0.9);
     }
 
     .hapoel-title {
       font-family: 'Oswald', sans-serif;
-      font-size: clamp(28px, 3.5vw, 48px);
+      font-size: clamp(26px, 3.2vw, 44px);
       font-weight: 700;
-      line-height: 1.1;
-      color: var(--page-text);
-      margin-bottom: 20px;
+      line-height: 1.15;
+      color: var(--white);
       letter-spacing: -0.01em;
     }
 
     .hapoel-title span {
-      color: var(--accent-dark);
+      color: var(--accent);
     }
 
     .hapoel-desc {
       font-size: 16px;
-      color: var(--muted-dark);
+      color: var(--text-muted);
       line-height: 1.85;
-      max-width: 600px;
+      max-width: 560px;
     }
 
     /* ── WINNER CARDS ── */
@@ -506,6 +521,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       max-width: 860px;
+      margin: 0 auto;
     }
 
     .winner-card {
@@ -604,8 +620,7 @@
     /* ── RESPONSIVE additions ── */
     @media (max-width: 900px) {
       .hapoel-section { padding: 64px 20px; }
-      .hapoel-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
-      .hapoel-logo-placeholder { margin: 0 auto; }
+      .hapoel-inner { gap: 24px; }
       .hapoel-desc { margin: 0 auto; }
       .winner-grid { grid-template-columns: 1fr; }
     }
@@ -842,7 +857,7 @@
     .package-card:hover .package-line { width: 64px; }
     .package-desc { font-size: 15px; color: var(--text-muted); line-height: 1.8; flex: 1; }
 
-    /* ── TIMELINE ── */
+    /* ── ZIGZAG TIMELINE ── */
     .timeline-section {
       background: #030d1a;
       padding: 100px 80px;
@@ -871,88 +886,208 @@
 
     .timeline-header { margin-bottom: 72px; }
 
-    .timeline-track {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+    /* Zigzag track */
+    .zz-track {
+      display: flex;
+      flex-direction: column;
       gap: 0;
+      margin-bottom: 64px;
+      position: relative;
     }
 
-    /* The connecting line */
-    .timeline-line {
+    /* קו אנכי רציף במרכז */
+    .zz-track::before {
+      content: '';
       position: absolute;
-      top: 28px;
-      right: 10%;
-      left: 10%;
-      height: 2px;
-      background: rgba(255,255,255,0.08);
+      top: 0; bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, rgba(99,162,255,0.25) 8%, rgba(99,162,255,0.25) 92%, transparent);
       z-index: 0;
     }
 
-    .timeline-line-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(270deg, var(--accent-dark), var(--accent));
-      transition: width 1.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .timeline-line-fill.animated { width: 100%; }
-
-    .timeline-step {
-      display: flex;
-      flex-direction: column;
+    .zz-step {
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
       align-items: center;
-      text-align: center;
-      padding: 0 12px;
+      min-height: 160px;
       position: relative;
       z-index: 1;
     }
 
-    .timeline-dot {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: rgba(8, 24, 50, 0.9);
-      border: 2px solid rgba(99,162,255,0.2);
+    .zz-content {
+      padding: 32px 40px;
+      background: rgba(8, 24, 50, 0.6);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      position: relative;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+    }
+
+    .zz-content:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+      border-color: rgba(99,162,255,0.2);
+    }
+
+    .zz-empty { /* empty side placeholder */ }
+
+    .zz-line-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 24px;
+      height: 100%;
       position: relative;
-      transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+      z-index: 2;
     }
 
-    .timeline-step:hover .timeline-dot {
-      border-color: var(--accent);
-      background: rgba(99,162,255,0.12);
-      transform: scale(1.15);
-      box-shadow: 0 0 24px rgba(99,162,255,0.3);
+    .zz-connector { display: none; } /* handled by track::before */
+
+    .zz-dot {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #030d1a;
+      border: 2px solid rgba(99,162,255,0.4);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
     }
 
-    .timeline-dot-num {
+    /* מספר בתוך העיגול */
+    .zz-dot::after {
+      content: attr(data-num);
       font-family: 'Oswald', sans-serif;
-      font-size: 20px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--accent);
-      line-height: 1;
     }
 
-    .timeline-step-title {
+    .zz-step:hover .zz-dot {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 6px rgba(99,162,255,0.1);
+      transform: scale(1.12);
+    }
+
+    .zz-num {
       font-family: 'Oswald', sans-serif;
-      font-size: 18px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .zz-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
       font-weight: 600;
       color: var(--white);
       margin-bottom: 10px;
-      line-height: 1.2;
+      line-height: 1.15;
       transition: color 0.3s ease;
     }
 
-    .timeline-step:hover .timeline-step-title { color: var(--accent); }
+    .zz-content:hover .zz-title { color: rgba(255,255,255,0.95); }
 
-    .timeline-step-desc {
-      font-size: 13px;
+    .zz-desc {
+      font-size: 14px;
       color: var(--text-muted);
-      line-height: 1.7;
-      opacity: 0.8;
+      line-height: 1.8;
+    }
+
+    /* Bottom 2 cards */
+    .zz-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .zz-card {
+      background: rgba(8,24,50,0.6);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid rgba(99,162,255,0.3);
+      border-radius: 4px;
+      padding: 36px 36px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+    }
+
+    .zz-card::before {
+      content: '';
+      position: absolute;
+      top: -3px; right: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(270deg, var(--accent), var(--accent-dark));
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .zz-card:hover { transform: translateY(-8px); box-shadow: 0 24px 52px rgba(0,0,0,0.5); border-top-color: var(--accent); }
+    .zz-card:hover::before { width: 100%; }
+
+    .zz-card-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(99,162,255,0.08);
+      border: 1px solid rgba(99,162,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: background 0.3s ease, transform 0.35s ease;
+    }
+
+    .zz-card:hover .zz-card-icon { background: rgba(99,162,255,0.16); transform: rotate(6deg) scale(1.08); }
+    .zz-card-icon svg { width: 20px; height: 20px; stroke: var(--accent); }
+
+    .zz-card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .zz-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+
+    @media (max-width: 900px) {
+      .timeline-section { padding: 64px 20px; }
+      .zz-track::before { left: 20px; }
+      .zz-step {
+        grid-template-columns: 40px 1fr;
+        min-height: unset;
+        margin-bottom: 8px;
+      }
+      .zz-right,
+      .zz-left { grid-template-columns: 40px 1fr; }
+      .zz-right .zz-content,
+      .zz-left .zz-content { grid-column: 2; grid-row: 1; }
+      .zz-right .zz-line-wrap,
+      .zz-left .zz-line-wrap { grid-column: 1; grid-row: 1; }
+      .zz-right .zz-empty,
+      .zz-left .zz-empty { display: none; }
+      .zz-dot { width: 36px; height: 36px; }
+      .zz-dot::after { font-size: 11px; }
+      .zz-content { padding: 22px 18px; }
+      .zz-cards { grid-template-columns: 1fr; gap: 14px; }
+      .zz-card { padding: 28px 20px; }
+      .timeline-header { margin-bottom: 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .timeline-section { padding: 48px 16px; }
     }
 
     /* ── BEFORE & AFTER ── */
@@ -1820,15 +1955,14 @@
     <div class="hapoel-inner">
       <div class="hapoel-logo-wrap reveal" style="--reveal-delay:0ms">
         <div class="hapoel-logo-placeholder">
-          <!-- כאן יבוא הלוגו של הפועל כפ"ס — החלף את ה-src -->
           <img src="assets/hapoel-logo.png" alt="הפועל כפר סבא" class="hapoel-logo-img" />
         </div>
       </div>
-      <div class="hapoel-text reveal" style="--reveal-delay:120ms">
-        <p class="section-tag">שיתוף פעולה רשמי</p>
-        <h2 class="hapoel-title">המאמן המנטלי הרשמי של<br/><span>הפועל כפר סבא</span></h2>
-        <p class="hapoel-desc">כבר 3 עונות שאני מנהל את התחום המנטלי במחלקת הנוער של הפועל כפר סבא, ומלווה באופן צמוד את קבוצת הנוער בליגת העל. עובד עם השחקנים על אישיות, ביטחון עצמי ומנטליות ווינרים — מהאימון הראשון ועד לשיא העונה.</p>
+      <div class="hapoel-text reveal" style="--reveal-delay:100ms">
+        <p class="section-tag" style="text-align:center">שיתוף פעולה רשמי</p>
+        <h2 class="hapoel-title">מוביל את התחום המנטלי<br/>במחלקת הנוער של <span>הפועל כפר סבא</span></h2>
       </div>
+      <p class="hapoel-desc reveal" style="--reveal-delay:200ms">כבר 2 עונות שאני עובד צמוד עם שחקני הנוער של הפועל כפ"ס — מלווה את הקבוצה בליגת העל, עובד עם כל שחקן על אישיות, ביטחון עצמי ומנטליות ווינרים. מהאימון הראשון ועד לרגעים הגדולים של העונה.</p>
     </div>
   </section>
 
@@ -1899,48 +2033,78 @@
 
   <!-- TIMELINE -->
   <section class="timeline-section" id="process">
-    <div class="timeline-header">
+    <div class="timeline-header reveal" style="--reveal-delay:0ms">
       <p class="section-tag">תהליך</p>
       <h2 class="section-title">איך זה עובד</h2>
     </div>
-    <div class="timeline-track" id="timeline-track">
-      <div class="timeline-line">
-        <div class="timeline-line-fill" id="timeline-fill"></div>
+
+    <div class="zz-track">
+
+      <!-- שלב 1 — ימין -->
+      <div class="zz-step zz-right reveal" style="--reveal-delay:0ms">
+        <div class="zz-content">
+          <h3 class="zz-title">פגישת אפיון מנטלי</h3>
+          <p class="zz-desc">נעשה פגישת אפיון מנטלי בה נבין מה חוסם אותך מלממש את הפוטנציאל שלך. בנוסף, אשלח לך שאלוני אישיות שיעזרו לי להבין איך לעזור לך בצורה הטובה ביותר.</p>
+        </div>
+        <div class="zz-line-wrap">
+          <div class="zz-dot" data-num="01"></div>
+        </div>
+        <div class="zz-empty"></div>
       </div>
-      <div class="timeline-step reveal" style="--reveal-delay:0ms">
-        <div class="timeline-dot"><div class="timeline-dot-num">01</div></div>
-        <div>
-          <h3 class="timeline-step-title">פגישת אפיון מנטלי</h3>
-          <p class="timeline-step-desc">נעשה פגישת אפיון מנטלי בה נבין מה חוסם אותך מלממש את הפוטנציאל שלך. בנוסף, אשלח לך שאלוני אישיות שיעזרו לי להבין איך לעזור לך בצורה הטובה ביותר.</p>
+
+      <!-- שלב 2 — שמאל -->
+      <div class="zz-step zz-left reveal" style="--reveal-delay:120ms">
+        <div class="zz-empty"></div>
+        <div class="zz-line-wrap">
+          <div class="zz-dot" data-num="02"></div>
+        </div>
+        <div class="zz-content">
+          <h3 class="zz-title">משמעת עצמית</h3>
+          <p class="zz-desc">בשלב הזה אנחנו נחזק את היכולת הכי משמעותית לביצוע כל תהליך שינוי אמיתי שבן אדם עובר — בכל תחום ובספורט בפרט. משמעת עצמית.</p>
         </div>
       </div>
-      <div class="timeline-step reveal" style="--reveal-delay:120ms">
-        <div class="timeline-dot"><div class="timeline-dot-num">02</div></div>
-        <div>
-          <h3 class="timeline-step-title">בקרוב...</h3>
-          <p class="timeline-step-desc">שלב זה יתעדכן בקרוב.</p>
+
+      <!-- שלב 3 — ימין -->
+      <div class="zz-step zz-right reveal" style="--reveal-delay:240ms">
+        <div class="zz-content">
+          <h3 class="zz-title">בניית ארגז כלים מנטלי</h3>
+          <p class="zz-desc">מייצרים לספורטאי את הכלים הנכונים להתגבר על כל סיטואציה שלילית על המגרש ובחיים — ביטחון עצמי, ניהול רגשות, התמודדות עם לחץ ועוד.</p>
+        </div>
+        <div class="zz-line-wrap">
+          <div class="zz-dot" data-num="03"></div>
+        </div>
+        <div class="zz-empty"></div>
+      </div>
+
+      <!-- שלב 4 — שמאל -->
+      <div class="zz-step zz-left reveal" style="--reveal-delay:360ms">
+        <div class="zz-empty"></div>
+        <div class="zz-line-wrap">
+          <div class="zz-dot" data-num="04"></div>
+        </div>
+        <div class="zz-content">
+          <h3 class="zz-title">פיתוח יכולות מנטליות</h3>
+          <p class="zz-desc">מיצוי הפוטנציאל המנטלי של הספורטאי — קשב וריכוז, מסוגלות עצמית, ויסות עוררות ושליטה רגשית. הספורטאי משחק טבעי, משוחרר וחסר מעצורים.</p>
         </div>
       </div>
-      <div class="timeline-step reveal" style="--reveal-delay:240ms">
-        <div class="timeline-dot"><div class="timeline-dot-num">03</div></div>
-        <div>
-          <h3 class="timeline-step-title">אימונים אישיים</h3>
-          <p class="timeline-step-desc">ניפגש לאימונים של בין 45 דקות לשעה שבהם נייצר הרגלים קטנים וחזקים שלאורך זמן ייצרו אפקט משמעותי על המגרש ומחוצה לו.</p>
+
+    </div>
+
+    <!-- 2 קופסאות למטה -->
+    <div class="zz-cards">
+      <div class="zz-card reveal" style="--reveal-delay:0ms">
+        <div class="zz-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.82a16 16 0 006.09 6.09l1.19-1.19a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         </div>
+        <h3 class="zz-card-title">ליווי יומיומי</h3>
+        <p class="zz-card-desc">לאורך כל התהליך, הספורטאי ואני נמצאים בקשר יומ-יומי על מנת לספק את התמיכה הנדרשת, לבצע מעקבים אחר ההתקדמות ולוודא שהמשימות נעשות בצורה עקבית ואיכותית.</p>
       </div>
-      <div class="timeline-step reveal" style="--reveal-delay:360ms">
-        <div class="timeline-dot"><div class="timeline-dot-num">04</div></div>
-        <div>
-          <h3 class="timeline-step-title">בניית ארגז כלים</h3>
-          <p class="timeline-step-desc">בניית ארגז כלים שיפתח לך יכולות מנטליות כמו ביטחון עצמי, ניהול לחצים וויסות רגשות.</p>
+      <div class="zz-card reveal" style="--reveal-delay:160ms">
+        <div class="zz-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-      </div>
-      <div class="timeline-step reveal" style="--reveal-delay:480ms">
-        <div class="timeline-dot"><div class="timeline-dot-num">05</div></div>
-        <div>
-          <h3 class="timeline-step-title">ליווי יומיומי</h3>
-          <p class="timeline-step-desc">לאורך כל התהליך, אני ואתה נהיה בקשר רציף ויום יומי כדי לספק את התמיכה הנדרשת, לחדד כל כלי שקיבלת ולוודא שאתה עומד במשימות שלך.</p>
-        </div>
+        <h3 class="zz-card-title">הורים — חלק מהתהליך</h3>
+        <p class="zz-card-desc">הורים יקרים, אני מאמין בשיתוף פעולה מלא אתכם. מעבר לקבוצת וואטסאפ משותפת ושיחות טלפוניות קבועות — אתם תמיד מוזמנים לפנות, לשתף ולהאיר עיניי. אני כאן לצדכם לייצר מסע משמעותי בדרך לשינוי שאתם חולמים עליו עבור הילד שלכם.</p>
       </div>
     </div>
   </section>
@@ -2158,10 +2322,10 @@
       const revealTargets = document.querySelectorAll(
         '.about-photo, .about-text, .services-header, .service-card, ' +
         '.packages-header, .package-card, .winner-card, ' +
-        '.hapoel-logo-wrap, .hapoel-text, ' +
+        '.hapoel-logo-wrap, .hapoel-text, .hapoel-desc, ' +
         '.cta-section .section-tag, .cta-section .section-title, ' +
         '.cta-section .section-body, .cta-actions, footer > *,' +
-        '.timeline-header, .timeline-step'
+        '.timeline-header, .zz-step, .zz-card'
       );
 
       revealTargets.forEach(el => el.classList.add('reveal'));
@@ -2182,25 +2346,7 @@
     })();
   </script>
 
-  <script>
-    /* ─── 6. TIMELINE LINE FILL ANIMATION ─── */
-    (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      const fill = document.getElementById('timeline-fill');
-      if (!fill) return;
-
-      const io = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          fill.classList.add('animated');
-          io.disconnect();
-        }
-      }, { threshold: 0.3 });
-
-      const track = document.getElementById('timeline-track');
-      if (track) io.observe(track);
-    })();
-  </script>
 
   <script>
     /* ─── 7. FAQ ACCORDION ─── */
