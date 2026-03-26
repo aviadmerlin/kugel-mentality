@@ -431,6 +431,191 @@
       z-index: 2;
     }
 
+    /* ── HAPOEL SECTION ── */
+    .hapoel-section {
+      background: #f2f7ff;
+      padding: 80px 80px;
+      border-bottom: 3px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hapoel-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 72px;
+      align-items: center;
+      max-width: 1100px;
+    }
+
+    .hapoel-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hapoel-logo-placeholder {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(10,35,70,0.06);
+      border: 2px solid rgba(99,162,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hapoel-logo-placeholder:hover {
+      transform: scale(1.05);
+      box-shadow: 0 16px 40px rgba(10,35,70,0.12);
+    }
+
+    .hapoel-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 16px;
+    }
+
+    .hapoel-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--page-text);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .hapoel-title span {
+      color: var(--accent-dark);
+    }
+
+    .hapoel-desc {
+      font-size: 16px;
+      color: var(--muted-dark);
+      line-height: 1.85;
+      max-width: 600px;
+    }
+
+    /* ── WINNER CARDS ── */
+    .winner-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 860px;
+    }
+
+    .winner-card {
+      background: rgba(8, 24, 50, 0.75);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      transition: transform 0.4s cubic-bezier(0.34,1.26,0.64,1), box-shadow 0.4s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .winner-card::before {
+      content: '';
+      position: absolute;
+      top: -3px; right: 0;
+      height: 3px; width: 0;
+      background: linear-gradient(270deg, var(--accent), var(--accent-dark));
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+    }
+
+    .winner-card::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: 50%;
+      transform: translateX(-50%);
+      width: 70%; height: 90px;
+      background: radial-gradient(ellipse at center, rgba(99,162,255,0.2), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.45s ease, bottom 0.45s ease;
+      pointer-events: none;
+    }
+
+    .winner-card:hover { transform: translateY(-10px); box-shadow: 0 28px 60px rgba(0,0,0,0.55); border-color: rgba(99,162,255,0.18); }
+    .winner-card:hover::before { width: 100%; }
+    .winner-card:hover::after { opacity: 1; bottom: -20px; }
+
+    .winner-card-featured {
+      border-top-color: var(--accent);
+    }
+
+    .winner-featured-tag {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--accent);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .winner-badge {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .winner-duration {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .winner-cta {
+      display: inline-flex;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid rgba(99,162,255,0.3);
+      padding-bottom: 2px;
+      width: fit-content;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .winner-cta:hover { color: var(--white); border-color: var(--white); }
+
+    /* ── RESPONSIVE additions ── */
+    @media (max-width: 900px) {
+      .hapoel-section { padding: 64px 20px; }
+      .hapoel-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .hapoel-logo-placeholder { margin: 0 auto; }
+      .hapoel-desc { margin: 0 auto; }
+      .winner-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .hapoel-section { padding: 48px 16px; }
+      .hapoel-logo-placeholder { width: 120px; height: 120px; }
+      .winner-card { padding: 36px 20px; }
+    }
+
     /* ── SERVICES ── */
     .services {
       background: var(--black);
@@ -1568,7 +1753,8 @@
     <a href="#" class="nav-logo">KUGEL <span>MENTALITY</span></a>
     <ul class="nav-links">
       <li><a href="#about" data-section="about">אודות</a></li>
-      <li><a href="#services" data-section="services">שירותים</a></li>
+      <li><a href="#services" data-section="services">ליווי אישי</a></li>
+      <li><a href="#teams" data-section="teams">קבוצות</a></li>
       <li><a href="#process" data-section="process">תהליך</a></li>
       <li><a href="#videos" data-section="videos">סרטונים</a></li>
       <li><a href="#contact" data-section="contact">צור קשר</a></li>
@@ -1629,70 +1815,84 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="services-header">
-      <div>
-        <p class="section-tag">שירותים</p>
-        <h2 class="section-title">מה אני מציע</h2>
+  <!-- HAPOEL KFAR SABA -->
+  <section class="hapoel-section" id="hapoel">
+    <div class="hapoel-inner">
+      <div class="hapoel-logo-wrap reveal" style="--reveal-delay:0ms">
+        <div class="hapoel-logo-placeholder">
+          <!-- כאן יבוא הלוגו של הפועל כפ"ס — החלף את ה-src -->
+          <img src="assets/hapoel-logo.png" alt="הפועל כפר סבא" class="hapoel-logo-img" />
+        </div>
       </div>
-      <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-primary">התחל עכשיו →</a>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-line"></div>
-        <h3 class="service-title">אימון מנטלי אישי</h3>
-        <p class="service-desc">עבודה 1:1 לפיתוח חוסן מנטלי, ביטחון עצמי ויכולת ביצוע תחת לחץ. מותאם אישית לכל ספורטאי.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-line"></div>
-        <h3 class="service-title">אימון לקבוצות</h3>
-        <p class="service-desc">בניית גישה ווינרית, שיפור תקשורת על המגרש, שיתוף פעולה וקבוצתיות.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-line"></div>
-        <h3 class="service-title">סדנאות</h3>
-        <p class="service-desc">סדנאות ממוקדות לקבוצות לשיפור יכולות מנטליות אישיות וקבוצתיות. כלים מעשיים ליישום מיידי.</p>
+      <div class="hapoel-text reveal" style="--reveal-delay:120ms">
+        <p class="section-tag">שיתוף פעולה רשמי</p>
+        <h2 class="hapoel-title">המאמן המנטלי הרשמי של<br/><span>הפועל כפר סבא</span></h2>
+        <p class="hapoel-desc">כבר 3 עונות שאני מנהל את התחום המנטלי במחלקת הנוער של הפועל כפר סבא, ומלווה באופן צמוד את קבוצת הנוער בליגת העל. עובד עם השחקנים על אישיות, ביטחון עצמי ומנטליות ווינרים — מהאימון הראשון ועד לשיא העונה.</p>
       </div>
     </div>
   </section>
 
-  <!-- PACKAGES -->
-  <section class="packages">
+  <!-- WINNER SECTION -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div>
+        <p class="section-tag">ליווי אישי</p>
+        <h2 class="section-title">איך אני בונה ווינרים</h2>
+      </div>
+      <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-primary">בואו נדבר →</a>
+    </div>
+    <div class="winner-grid">
+      <div class="winner-card reveal" style="--reveal-delay:0ms">
+        <div class="winner-badge">WINNER 8</div>
+        <div class="winner-duration">חודשיים · 8 פגישות</div>
+        <div class="service-line"></div>
+        <p class="service-desc">תהליך ליווי אישי של חודשיים עם 8 פגישות אחד על אחד. מעקב יום-יומי אחר ההתקדמות, תקשורת צמודה וזמינות מלאה לאורך כל הדרך.</p>
+        <a href="https://api.whatsapp.com/send?phone=524386813" class="winner-cta">אני רוצה להתחיל →</a>
+      </div>
+      <div class="winner-card winner-card-featured reveal" style="--reveal-delay:160ms">
+        <div class="winner-featured-tag">הכי פופולרי</div>
+        <div class="winner-badge">WINNER 12</div>
+        <div class="winner-duration">3 חודשים · 12 פגישות</div>
+        <div class="service-line"></div>
+        <p class="service-desc">תהליך ליווי אישי מקיף של 3 חודשים עם 12 פגישות. מעקב יום-יומי, תקשורת צמודה וזמינות מלאה — מספיק זמן לשינוי אמיתי ועמוק.</p>
+        <a href="https://api.whatsapp.com/send?phone=524386813" class="winner-cta">אני רוצה להתחיל →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAMS SECTION -->
+  <section class="packages" id="teams">
     <div class="packages-header">
       <div>
-        <p class="section-tag">תוכניות</p>
-        <h2 class="section-title">בחר את תוכנית הליווי שלך</h2>
+        <p class="section-tag">לקבוצות ומועדונים</p>
+        <h2 class="section-title">שדרג את הקבוצה שלך</h2>
       </div>
-      <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-primary">שוחח איתי →</a>
+      <a href="https://api.whatsapp.com/send?phone=524386813" class="btn-primary">דברו איתי →</a>
     </div>
     <div class="packages-grid">
       <div class="package-card">
         <div class="package-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M6 3H4a2 2 0 0 0-2 2v1a4 4 0 0 0 4 4h.5M18 3h2a2 2 0 0 1 2 2v1a4 4 0 0 1-4 4h-.5"/><path d="M6 3h12v7a6 6 0 0 1-6 6 6 6 0 0 1-6-6V3z"/></svg>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3 class="package-title">הרצאות וסדנאות לבניית וויינרים</h3>
+        <h3 class="package-title">אימון קבוצתי</h3>
         <div class="package-line"></div>
-        <p class="package-desc">מגוון הרצאות וסדנאות לפיתוח יכולות מנטליות: פיתוח ביטחון עצמי, בניית חוסן מנטלי, משמעת עצמית, סדנת מיינדפולנס לפיתוח יכולות קשב וריכוז, ניהול רגשות וויסות לחץ. ניתן להזמין הרצאה על פי דרישה לנושא מסוים מהתחום המנטלי.</p>
+        <p class="package-desc">בניית גישה ווינרית משותפת, שיפור תקשורת על המגרש, חיזוק קבוצתיות ושיתוף פעולה. מותאם לצרכי הקבוצה והמאמן.</p>
       </div>
       <div class="package-card">
         <div class="package-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <h3 class="package-title">WINNER 12</h3>
+        <h3 class="package-title">הרצאות וסדנאות</h3>
         <div class="package-line"></div>
-        <p class="package-desc">תהליך ליווי של 3 חודשים, כולל 12 פגישות, מעקבים יום-יומיים אחר ההתקדמות, תקשורת צמודה וזמינות מלאה.</p>
+        <p class="package-desc">סדנאות ממוקדות לפיתוח יכולות מנטליות: ביטחון עצמי, חוסן מנטלי, משמעת עצמית, מיינדפולנס, ניהול רגשות וויסות לחץ. ניתן להזמין הרצאה בנושא מסוים לפי דרישה.</p>
       </div>
       <div class="package-card">
         <div class="package-icon">
-          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 class="package-title">Winner 8</h3>
+        <h3 class="package-title">ליווי עונתי</h3>
         <div class="package-line"></div>
-        <p class="package-desc">תהליך ליווי של חודשיים, כולל 8 פגישות, מעקבים יום-יומיים אחר ההתקדמות, תקשורת צמודה וזמינות מלאה.</p>
+        <p class="package-desc">ליווי מנטלי צמוד לאורך כל העונה — עבודה שוטפת עם השחקנים והמאמן, מעקב אחר ההתקדמות ותמיכה בכל שלבי העונה.</p>
       </div>
     </div>
   </section>
@@ -1957,7 +2157,8 @@
 
       const revealTargets = document.querySelectorAll(
         '.about-photo, .about-text, .services-header, .service-card, ' +
-        '.packages-header, .package-card, ' +
+        '.packages-header, .package-card, .winner-card, ' +
+        '.hapoel-logo-wrap, .hapoel-text, ' +
         '.cta-section .section-tag, .cta-section .section-title, ' +
         '.cta-section .section-body, .cta-actions, footer > *,' +
         '.timeline-header, .timeline-step'
@@ -1965,7 +2166,7 @@
 
       revealTargets.forEach(el => el.classList.add('reveal'));
 
-      document.querySelectorAll('.service-card, .testimonial-card, .package-card').forEach((card, i) => {
+      document.querySelectorAll('.service-card, .testimonial-card, .package-card, .winner-card').forEach((card, i) => {
         card.style.setProperty('--reveal-delay', (i % 3) * 90 + 'ms');
       });
 
