@@ -2298,7 +2298,7 @@
           requestAnimationFrame(() => {
             const scrolled = window.scrollY;
             // Move image up at 30% of scroll speed — subtle, not jarring
-            img.style.transform = `translateY(${scrolled * 0.3}px)`;
+            img.style.transform = `scaleX(-1) translateY(${scrolled * 0.3}px)`;
             ticking = false;
           });
           ticking = true;
